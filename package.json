@@ -1,0 +1,22 @@
+{
+  "name": "show_times",
+  "version": "1.0.0",
+  "description": "",
+  "main": "nodejs_api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatrixPanda/Show_Times.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatrixPanda/Show_Times/issues"
+  },
+  "homepage": "https://github.com/MatrixPanda/Show_Times#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
