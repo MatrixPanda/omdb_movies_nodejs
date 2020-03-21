@@ -49,14 +49,17 @@ td {
 }
 
 a {
-    padding: 0.5em;
+    padding: 0.5rem;
     text-decoration: none;
     color: var(--secondary-color);
 }
 
 a:hover {
     border: 1px solid black;
+    border-radius: 25px;
     cursor: pointer;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
 }
 
 .times {
