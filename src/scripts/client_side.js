@@ -18,6 +18,8 @@ window.onload = function() {
 
                             link.onclick = function() {
                                 getDetails(showtime.id);
+                                // window.scrollTo(0, document.body.scrollHeight);  // Auto scroll to the bottom
+                                // console.log(document.body.scrollHeight);
                             };
 
                             var tcell = document.createElement("td");
@@ -131,11 +133,17 @@ function getDetails(id) {
 
                 newDivItem = document.createElement('div');
                 newDivItem.setAttribute('class', 'movie-description');
-                var cellText = document.createTextNode('Rating: ' + details.imdbRating);
+                var cellText = document.createTextNode('Rating: ');
                 newDivItem.appendChild(cellText);
+
+                for (i=0; i < Math.floor(details.imdbRating); i++) {
+                    var r = document.createElement("IMG");
+                    r.setAttribute("src", "images/award.png");
+                    r.setAttribute("style", "margin: 0.0rem 0.5rem 0.0rem 0rem;");
+                    newDivItem.appendChild(r);
+                }
                 tcellDescription.appendChild(newDivItem);
                 
-
                 trow.appendChild(tcellDescription);
                 
                 tbl.appendChild(trow);
