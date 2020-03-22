@@ -15,10 +15,9 @@ window.onload = function() {
                             // let link = document.createElement('a');
                             // link.setAttribute('value', showtime.title)  // note: using 'value' doesn't work
                             link.appendChild(cellText);
+
                             link.onclick = function() {
-                                let details = document.getElementById('show-detailed-info');
-                                details.style.display = 'flex';
-                                console.log(showtime.id);
+                                getDetails(showtime.id);
                             };
 
                             var tcell = document.createElement("td");
@@ -45,5 +44,101 @@ window.onload = function() {
                 let insertToDiv = document.getElementById('show-info');
                 insertToDiv.appendChild(tbl);
             });
-            
+
+}
+
+
+var apiKeys = {
+    omdb: 'fab1cfc1',
+};
+
+
+// A function that gets the advanced details of a movie provided at https://www.omdbapi.com
+// Follows the format http://www.omdbapi.com/?i=${id}&apikey=${apiKey}
+function getDetails(id) {
+    let detailsSection = document.getElementById('show-detailed-info');
+    detailsSection.style.display = 'flex';
+    detailsSection.innerHTML = "";  // note: This will clear this div each time before appending to it
+
+    fetch('http://www.omdbapi.com/?i=' + id + '&apikey=' + apiKeys.omdb)
+            .then((response) => response.json())
+            .then((details) => {
+                this.console.log(details.Title);
+                var tbl = document.createElement("table");
+                var trow = document.createElement("tr");
+
+                // Show poster
+                var tcellPoster = document.createElement("td");
+                var p = document.createElement("IMG");
+                p.setAttribute("src", details.Poster);
+                // p.setAttribute("width", "304");
+                // p.setAttribute("height", "228");
+                // p.setAttribute("alt", "");
+                tcellPoster.appendChild(p);
+                trow.appendChild(tcellPoster);
+
+
+                // Show descriptions
+                var tcellDescription = document.createElement("td");
+
+                newDivItem = document.createElement('div');
+                newDivItem.setAttribute('class', 'movie-description');
+                var cellText = document.createTextNode('Title: ' + details.Title);
+                newDivItem.appendChild(cellText);
+                tcellDescription.appendChild(newDivItem);
+
+                newDivItem = document.createElement('div');
+                newDivItem.setAttribute('class', 'movie-description');
+                var cellText = document.createTextNode('Year: ' + details.Year);
+                newDivItem.appendChild(cellText);
+                tcellDescription.appendChild(newDivItem);
+
+                newDivItem = document.createElement('div');
+                newDivItem.setAttribute('class', 'movie-description');
+                var cellText = document.createTextNode('Genre: ' + details.Genre);
+                newDivItem.appendChild(cellText);
+                tcellDescription.appendChild(newDivItem);
+
+                newDivItem = document.createElement('div');
+                newDivItem.setAttribute('class', 'movie-description');
+                var cellText = document.createTextNode('Runtime: ' + details.Runtime);
+                newDivItem.appendChild(cellText);
+                tcellDescription.appendChild(newDivItem);
+
+                newDivItem = document.createElement('div');
+                newDivItem.setAttribute('class', 'movie-description');
+                var cellText = document.createTextNode('Director: ' + details.Director);
+                newDivItem.appendChild(cellText);
+                tcellDescription.appendChild(newDivItem);
+
+                newDivItem = document.createElement('div');
+                newDivItem.setAttribute('class', 'movie-description');
+                var cellText = document.createTextNode('Writer: ' + details.Writer);
+                newDivItem.appendChild(cellText);
+                tcellDescription.appendChild(newDivItem);
+
+                newDivItem = document.createElement('div');
+                newDivItem.setAttribute('class', 'movie-description');
+                var cellText = document.createTextNode('Actors: ' + details.Actors);
+                newDivItem.appendChild(cellText);
+                tcellDescription.appendChild(newDivItem);
+
+                newDivItem = document.createElement('div');
+                newDivItem.setAttribute('class', 'movie-description');
+                var cellText = document.createTextNode('Plot: ' + details.Plot);
+                newDivItem.appendChild(cellText);
+                tcellDescription.appendChild(newDivItem);
+
+                newDivItem = document.createElement('div');
+                newDivItem.setAttribute('class', 'movie-description');
+                var cellText = document.createTextNode('Rating: ' + details.imdbRating);
+                newDivItem.appendChild(cellText);
+                tcellDescription.appendChild(newDivItem);
+                
+
+                trow.appendChild(tcellDescription);
+                
+                tbl.appendChild(trow);
+                detailsSection.appendChild(tbl);
+            });
 }

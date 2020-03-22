@@ -1,7 +1,5 @@
 let express = require('express');
 let app = express();
-// let session = require('express-session');
-// let uuid = require('uuid/v1');
 let bodyParser = require('body-parser');
 
 // middleware
@@ -49,34 +47,9 @@ var showtimes = [
       }
    ];
 
-// var info = JSON.stringify(showtimes);
-
 app.get('/showtimes', (request, response) => { response.send(showtimes); });
-// app.get('/showtimes', (request,response) => {
-//     response.sendFile(__dirname + '/src/showtimes.html');
-// });
-
 
 app.set('port', 3001);
 app.listen(app.get('port'), () => {
     console.log('Node.js/Express is listening on port ' + app.get('port'));
 });
-
-// let express = require('express');
-// let app = express();
-// let bodyParser = require('body-parser');
-
-// // middleware
-// app.use(bodyParser.urlencoded({ extended: false }));
-
-// app.use(express.static('src'));
-
-// app.get('/showtimes', (request,response) => {
-//     response.sendFile(__dirname + '/src/showtimes.html');
-// });
-
-// app.set('port', 3001);
-
-// app.listen(app.get('port'), () => {
-//     console.log('Node.js/Express is listening on port ' + app.get('port'));
-// });

@@ -62,11 +62,6 @@ a:hover {
     color: var(--primary-color);
 }
 
-.times {
-    padding-left: 400px;
-    /* display: list-item;  */
-}
-
 #show-detailed-info {
     display: none;
     background-color: var(--primary-color);
@@ -74,4 +69,14 @@ a:hover {
     border-top: 1px solid black;
     margin-top: 30px;
     padding: 0.5em 0em 0.5em 0em;
+}
+
+
+.times {
+    padding-left: 400px;
+    /* display: list-item;  */
+}
+
+.movie-description {
+    padding: 0.5em 3em 0.5em 3em;
 }
